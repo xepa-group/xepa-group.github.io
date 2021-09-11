@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+   <body>
+      <nav>
+         <ul>
+            <li><a href="/index.html">HJEM</a></li>
+            <li><a href="/visitkort.html">VISIT KORT</a></li>
+         </ul>
+      </nav>
+      <center>
+         <h1>Medlemmer</h1>
+         <div class="card" style="background-image: url(bilder/studenter/adam.jpg)">
+            <p class="name">Adam Pajestka</p>
+            <ul>
+               <li>Fra: Bø</li>
+               <li>Favorit fag: Engelsk</li>
+               <li>Fritids aktiviteter: Spille fotball og volleyball</li>
+            </ul>
+         </div>
+         <br>
+         <br>
+         <div class="card" style="background-image: url(bilder/studenter/bjarne.jpg)">
+            <p class="name">Bjarne Røvang</p>
+            <ul>
+               <li>Fra: Haugesund</li>
+               <li>Favorit fag: Toppidrett</li>
+               <li>Fritids aktiviteter: Liker å trene og smarte duppeditter</li>
+            </ul>
+         </div>
+         <br>
+         <br>
+         <div class="card" style="background-image: url(bilder/studenter/henrik.jpg)">
+            <p class="name">Henrik Hodne </p>
+            <ul>
+               <li>Fra: Kristiansand</li>
+               <li>Favorit fag: Historie</li>
+               <li>Fritids aktiviteter: Liker å trene og spile fotball</li>
+            </ul>
+         </div>
+         <br>
+         <br>
+         <div class="card" style="background-image: url(bilder/studenter/kalieb.jpg)">
+            <p class="name">Kalieb Gaim</p>
+            <ul>
+               <li>Fra: Lunner</li>
+               <li>Favorit fag: Gym</li>
+               <li>Fritids aktiviteter: Liker sport of musikk</li>
+            </ul>
+         </div>
+         <br>
+         <br>
+         <div class="card" style="background-image: url(bilder/studenter/sid.jpg)">
+            <p class="name">Siddharth Dushantha</p>
+            <ul>
+               <li>Fra: Stavanger</li>
+               <li>Favorit fag: IKT</li>
+               <li>Fritids aktiviteter: Liker og sykkle og skate</li>
+            </ul>
+         </div>
+         <br>
+         <br>
+      </center>
+   </body>
+   <style>
+      @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+      /* Visit car list */
+      div {
+      transition: 0.9s all;
+      }
+      div:hover {
+      transform: scale(1.2);
+      }
+      h1 {
+      font-family: 'Nunito Sans', sans-serif;
+      }
+      .card {
+      font-family: 'Nunito Sans', sans-serif;
+      width: 600px;
+      padding: 10px;
+      background-repeat: no-repeat;
+      background-position: right;
+      background-size: contain;
+      border-radius: 11px;
+      box-shadow:  6px 6px 24px #c1c1c1,
+      -6px -6px 24px #ffffff;
+      }
+      ul {
+      list-style: "- ";
+      }
+      .name {
+      font-size: 20px;
+      text-align: left;
+      }
+      li {
+      text-align: left;
+      }
+      img {
+      float: left;
+      }
+      /* Nav Bar */
+      nav{
+      padding-left: 80px;
+      padding-right: 80px;
+      }
+      nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      }
+      nav li {
+      display: inline-block
+      }
+      nav li a {
+      display: block;
+      color: #000000;
+      text-align: center;
+      padding: 15px 18px;
+      text-decoration: none;
+      font-weight: 900;
+      }
+      /* Navbar hover underline animation */
+      a {
+      color: #000;
+      text-transform: uppercase;
+      text-decoration: none;
+      letter-spacing: 0.15em;
+      display: inline-block;
+      padding: 15px 20px;
+      position: relative;
+      }
+      a:after {    
+      background: none repeat scroll 0 0 transparent;
+      bottom: 0;
+      content: "";
+      display: block;
+      height: 2px;
+      left: 50%;
+      position: absolute;
+      background: #000;
+      transition: width 0.3s ease 0s, left 0.3s ease 0s;
+      width: 0;
+      }
+      a:hover:after { 
+      width: 100%; 
+      left: 0; 
+      }
+   </style>
+</html>
+

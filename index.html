@@ -1,9 +1,71 @@
-<!DOCTYPE html>
-<html>
+      <nav>
+         <ul>
+            <li><a href="/index.html">HJEM</a></li>
+            <li><a href="/visitkort.html">VISIT KORT</a></li>
+         </ul>
+      </nav>
 
-<title>IS-114</title>
 <body>
-    <center><h1>Velkommen til IS-114</h1></center>
+    <center><h1>Velkommen Til IS-114</h1></center>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center><img src="bilder/gruppe.png" width="30%"></center>
 </body>
+<style>
+      @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
 
-</html>
+      h1 {
+      font-family: 'Nunito Sans', sans-serif;
+      }
+
+      /* Nav Bar */
+      nav{
+      padding-left: 80px;
+      padding-right: 80px;
+      }
+      nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      }
+      nav li {
+      display: inline-block
+      }
+      nav li a {
+      display: block;
+      color: #000000;
+      text-align: center;
+      padding: 15px 18px;
+      text-decoration: none;
+      font-weight: 900;
+      }
+      /* Navbar hover underline animation */
+      a {
+      color: #000;
+      text-transform: uppercase;
+      text-decoration: none;
+      letter-spacing: 0.15em;
+      display: inline-block;
+      padding: 15px 20px;
+      position: relative;
+      }
+      a:after {    
+      background: none repeat scroll 0 0 transparent;
+      bottom: 0;
+      content: "";
+      display: block;
+      height: 2px;
+      left: 50%;
+      position: absolute;
+      background: #000;
+      transition: width 0.3s ease 0s, left 0.3s ease 0s;
+      width: 0;
+      }
+      a:hover:after { 
+      width: 100%; 
+      left: 0; 
+      }
+</style>
