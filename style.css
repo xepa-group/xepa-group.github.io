@@ -70,7 +70,7 @@ nav li a {
 
 
 /* Navbar hover underline animation */
-a {
+nav a {
   color: #000;
   text-transform: uppercase;
   text-decoration: none;
@@ -80,7 +80,7 @@ a {
   position: relative;
 }
 
-a:after {
+nav a:after {
   background: none repeat scroll 0 0 transparent;
   bottom: 0;
   content: "";
@@ -93,7 +93,7 @@ a:after {
   width: 0;
 }
 
-a:hover:after {
+nav a:hover:after {
   width: 100%;
   left: 0;
 }
