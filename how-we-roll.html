@@ -37,7 +37,7 @@
 
         </div>
     <script>
-  // From https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch (seen 2021-09-27)
+   // From https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch (seen 2021-09-27)
    // Example POST method implementation using fetch:
    async function postData(url = '', data = {}) {
        // Default options are marked with *
@@ -61,10 +61,10 @@
         event.preventDefault();
         const data = new FormData(event.target);
         const formJSON = Object.fromEntries(data.entries());
-        const output = document.querySelector('.output pre');
+        const results = document.querySelector('.output pre');
         postData('https://bacit.info/', formJSON)
         .then(data => {
-           output.innerText = JSON.stringify(data, null, 2);
+           results.innerText = JSON.stringify(data, null, 2);
         });
    }
    const form = document.querySelector('form');
