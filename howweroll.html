@@ -1,15 +1,74 @@
-<html>
-    <title>HOW WE ROLL - IS-114</title>
-   <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+<DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>HOW WE ROLL - IS-114</title>
 
-      <!--Hent navbar-->
-      <script src="addNavBar.js"></script>
-      <link rel="stylesheet" href="styles/howweroll.css">
-   </head>
-<body>
-    <center>
-    <h1 class="center typing" >Kommer Snart...</h1>
-    </center>
-</body>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!--Hent navbar-->
+        <script src="addNavBar.js"></script>
+        <link rel="stylesheet" href="styles/howweroll.css">
+    </head>
+    <body>
+        <div class="centered">
+            <form>
+                <!--Navn av person-->
+                <p>
+                <label for="name">NAVN</label>
+                <input type="text" id="name" name="name">
+                </p>
+
+                <p>
+                <!-- dorn - day or night -->
+                <label for="dorn">MORGENFUGL</label>
+                <input type="range" id="dorn" name="dorn" value="50">
+                <label for="dorn">NATTUGLE</label>
+                </p>
+
+                <button type="submit">Send</button>
+            </form>
+
+            <p>JSON Output</p>
+            <div class="output">
+                <pre class="output"></pre>
+            <div>
+
+        </div>
+    <script>
+  // From https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch (seen 2021-09-27)
+   // Example POST method implementation using fetch:
+   async function postData(url = '', data = {}) {
+       // Default options are marked with *
+       const response = await fetch(url, {
+           method: 'POST', // *GET, POST, PUT, DELETE, etc.
+           mode: 'cors', // no-cors, *cors, same-origin
+           cache: 'no-cache', // *default, no-cache, reload, force-cache,only-if-cached
+           credentials: 'same-origin', // include, *same-origin, omit
+           headers: {
+               'Content-Type': 'application/json',
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+           },
+           redirect: 'follow', // manual, *follow, error
+           referrerPolicy: 'no-referrer', // no-referrer,*no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+           body: JSON.stringify(data) // body data type must match"Content-Type"header
+       });
+       return response.json(); // parses JSON response into native JavaScriptobjects
+   }
+
+   function handleSubmit(event) {
+        event.preventDefault();
+        const data = new FormData(event.target);
+        const formJSON = Object.fromEntries(data.entries());
+        const output = document.querySelector('.output pre');
+        postData('https://bacit.info/', formJSON)
+        .then(data => {
+           output.innerText = JSON.stringify(data, null, 2);
+        });
+   }
+   const form = document.querySelector('form');
+   form.addEventListener('submit', handleSubmit);
+    </script>
+    </body>
 </html>

@@ -1,36 +1,33 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import "navbar.css";
+
+
 
 h1 {
   font-family: "Nunito Sans", sans-serif;
 }
 
-.center {
+input {
+  font-size: 18px;
+}
+
+form {
+  width: 600px;
+  height: 500px;
+  padding: 60px 35px 35px 35px;
+  border-radius: 15px;
+  background: #ffffff;
+}
+
+.output {
+    font-size: 15px;
+    border-radius: 5px;
+    margin: 30px;
+}
+
+.centered {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-.typing {
-  width: 16ch;
-  animation: typing 2s steps(22), blink .5s step-end infinite alternate;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 3px solid;
-  font-family: monospace;
-  font-size: 2em;
-}
-
-@keyframes typing {
-  from {
-    width: 0
-  }
-}
-    
-@keyframes blink {
-  50% {
-    border-color: transparent
-  }
 }

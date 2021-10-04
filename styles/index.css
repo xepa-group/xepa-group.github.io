@@ -4,3 +4,11 @@
 h1 {
   font-family: "Nunito Sans", sans-serif;
 }
+
+.aligncenter{
+    text-align: center;
+}
+
+#gruppebilde{
+    width: 30%;
+}
