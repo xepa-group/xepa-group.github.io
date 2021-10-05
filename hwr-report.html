@@ -58,94 +58,40 @@
         </div>
 
         <script>
-            fetch('https://bacit.info/hwr/20211005130132-60b853c2a0446bbe180cbcad1afa8019.json')
-              .then((response) => {
-                return response.json()
-              })
-              .then((data) => {
-                // Leg til dataen fra JSON data til dokumentet
-                document.querySelector("#adam .navn").innerHTML += data.name
-                document.querySelector("#adam .dorn").innerHTML += data.dorn
-                document.querySelector("#adam .personality").innerHTML += data.personality
-                document.querySelector("#adam .workplace").innerHTML += data.workplace
-              })
-              .catch((err) => {
-                // Hvis noe feil skjer imens vi prøver å legge til dataen i dokumented,
-                // vis en feilmelding
-                alert("Noe feil med koden i Adam sin del")
-              })
+            // En liten database med navn av gruppe medlem og deres TRXID-TIME verdi
+            // fra JSON output fra HTML formen fra how-we-roll.html
+            const user_ids = {
+                "adam": "20211005134610-9740e9a04bd112608ca29b3e1dc014ee", 
+                "bjarne": "20211005134646-fafb3dcea2ce539cc26dcb83bd5eda47",
+                "henrik": "20211005134710-aed964a9a279ec37b5e6035c5a1ed6cc",
+                "kalieb": "20211005134734-b48054df20e75f1dd71abd7edc1f5409",
+                "sid": "20211005134808-c5e36e49732eb221688a7ddfaa9adf11"
+                };
 
+            // Looper gjennom user_ids
+            for (const [key, value] of Object.entries(user_ids)) {
+                    let user_name = key;
+                    let user_id = value;
 
-            fetch('https://bacit.info/hwr/20211005130204-a31bdd8df1a15d3ee7daaccd6c397fb6.json')
-              .then((response) => {
-                return response.json()
-              })
-              .then((data) => {
-                // Leg til dataen fra JSON data til dokumentet
-                document.querySelector("#bjarne .navn").innerHTML += data.name
-                document.querySelector("#bjarne .dorn").innerHTML += data.dorn
-                document.querySelector("#bjarne .personality").innerHTML += data.personality
-                document.querySelector("#bjarne .workplace").innerHTML += data.workplace
-              })
-              .catch((err) => {
-                // Hvis noe feil skjer imens vi prøver å legge til dataen i dokumented,
-                // vis en feilmelding
-                alert("Noe feil med koden i Bjarne sin del")
-              })
+                    // Henter data basert på brukeren TRXID-TIME verdi
+                    fetch(`https://bacit.info/hwr/${user_id}.json`)
+                        .then((response) => {
+                                return response.json()
+                            })
+                        .then((data) => {
+                                // Leg til dataen fra JSON data til dokumentet
+                                document.querySelector(`#${user_name} .navn`).innerHTML += data.name
+                                document.querySelector(`#${user_name} .dorn`).innerHTML += data.dorn
+                                document.querySelector(`#${user_name} .personality`).innerHTML += data.personality
+                                document.querySelector(`#${user_name} .workplace`).innerHTML += data.workplace
+                            })
+                        .catch((err) => {
+                                // Hvis noe feil skjer imens vi prøver å legge til dataen i dokumented,
+                                // vis en feilmelding
+                                alert("Noe feil med koden kopmis :P")
+                            })
+                }
 
-
-            fetch('https://bacit.info/hwr/20211005130251-b2d05bde52b959de88706272ca0b84f3.json')
-              .then((response) => {
-                return response.json()
-              })
-              .then((data) => {
-                // Leg til dataen fra JSON data til dokumentet
-                document.querySelector("#henrik .navn").innerHTML += data.name
-                document.querySelector("#henrik .dorn").innerHTML += data.dorn
-                document.querySelector("#henrik .personality").innerHTML += data.personality
-                document.querySelector("#henrik .workplace").innerHTML += data.workplace
-              })
-              .catch((err) => {
-                // Hvis noe feil skjer imens vi prøver å legge til dataen i dokumented,
-                // vis en feilmelding
-                alert("Noe feil med koden i Henrik sin del")
-              })
-
-
-            fetch('https://bacit.info/hwr/20211005130409-1a3f37750b0ac7fa4f8c28cd6c4b2d3d.json')
-              .then((response) => {
-                return response.json()
-              })
-              .then((data) => {
-                // Leg til dataen fra JSON data til dokumentet
-                document.querySelector("#kalieb .navn").innerHTML += data.name
-                document.querySelector("#kalieb .dorn").innerHTML += data.dorn
-                document.querySelector("#kalieb .personality").innerHTML += data.personality
-                document.querySelector("#kalieb .workplace").innerHTML += data.workplace
-              })
-              .catch((err) => {
-                // Hvis noe feil skjer imens vi prøver å legge til dataen i dokumented,
-                // vis en feilmelding
-                alert("Noe feil med koden i Kalieb sin del")
-              })
-
-
-            fetch('https://bacit.info/hwr/20211005123425-bca7c7b54db48bdd7e55e3cd5f7d9201.json')
-              .then((response) => {
-                return response.json()
-              })
-              .then((data) => {
-                // Leg til dataen fra JSON data til dokumentet
-                document.querySelector("#sid .navn").innerHTML += data.name
-                document.querySelector("#sid .dorn").innerHTML += data.dorn
-                document.querySelector("#sid .personality").innerHTML += data.personality
-                document.querySelector("#sid .workplace").innerHTML += data.workplace
-              })
-              .catch((err) => {
-                // Hvis noe feil skjer imens vi prøver å legge til dataen i dokumented,
-                // vis en feilmelding
-                alert("Noe feil med koden i Sid sin del")
-              })
         </script>
     </body>
 </html>
