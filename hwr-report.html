@@ -1,0 +1,151 @@
+<DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>HOW WE ROLL REPORT - IS-114</title>
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <body>
+        <!--Resultat fra Adam-->
+        <div class="person" id="adam">
+            <div class="navn"><b>Navn:</b> </div>
+            <div class="dorn"><b>Morgenful/Natugle:</b> </div>
+            <div class="personality"><b>Personalitet:</b> </div>
+            <div class="workplace"><b>Vil helst jobbe:</b> </div>
+        </div>
+
+        <br>
+
+        <!--Resultat fra Bjarne-->
+        <div class="person" id="bjarne">
+            <div class="navn"><b>Navn:</b> </div>
+            <div class="dorn"><b>Morgenful/Natugle:</b> </div>
+            <div class="personality"><b>Personalitet:</b> </div>
+            <div class="workplace"><b>Vil helst jobbe:</b> </div>
+        </div>
+
+        <br>
+
+        <!--Resultat fra Henrik-->
+        <div class="person" id="henrik">
+            <div class="navn"><b>Navn:</b> </div>
+            <div class="dorn"><b>Morgenful/Natugle:</b> </div>
+            <div class="personality"><b>Personalitet:</b> </div>
+            <div class="workplace"><b>Vil helst jobbe:</b> </div>
+        </div>
+
+        <br>
+
+        <!--Resultat fra Kalieb-->
+        <div class="person" id="kalieb">
+            <div class="navn"><b>Navn:</b> </div>
+            <div class="dorn"><b>Morgenful/Natugle:</b> </div>
+            <div class="personality"><b>Personalitet:</b> </div>
+            <div class="workplace"><b>Vil helst jobbe:</b> </div>
+        </div>
+
+        <br>
+
+        <!--Resultat fra Sid-->
+        <div class="person" id="sid">
+            <div class="navn"><b>Navn:</b> </div>
+            <div class="dorn"><b>Morgenful/Natugle:</b> </div>
+            <div class="personality"><b>Personalitet:</b> </div>
+            <div class="workplace"><b>Vil helst jobbe:</b> </div>
+        </div>
+
+        <script>
+            fetch('https://bacit.info/hwr/20211005130132-60b853c2a0446bbe180cbcad1afa8019.json')
+              .then((response) => {
+                return response.json()
+              })
+              .then((data) => {
+                // Leg til dataen fra JSON data til dokumentet
+                document.querySelector("#adam .navn").innerHTML += data.name
+                document.querySelector("#adam .dorn").innerHTML += data.dorn
+                document.querySelector("#adam .personality").innerHTML += data.personality
+                document.querySelector("#adam .workplace").innerHTML += data.workplace
+              })
+              .catch((err) => {
+                // Hvis noe feil skjer imens vi prøver å legge til dataen i dokumented,
+                // vis en feilmelding
+                alert("Noe feil med koden i Adam sin del")
+              })
+
+
+            fetch('https://bacit.info/hwr/20211005130204-a31bdd8df1a15d3ee7daaccd6c397fb6.json')
+              .then((response) => {
+                return response.json()
+              })
+              .then((data) => {
+                // Leg til dataen fra JSON data til dokumentet
+                document.querySelector("#bjarne .navn").innerHTML += data.name
+                document.querySelector("#bjarne .dorn").innerHTML += data.dorn
+                document.querySelector("#bjarne .personality").innerHTML += data.personality
+                document.querySelector("#bjarne .workplace").innerHTML += data.workplace
+              })
+              .catch((err) => {
+                // Hvis noe feil skjer imens vi prøver å legge til dataen i dokumented,
+                // vis en feilmelding
+                alert("Noe feil med koden i Bjarne sin del")
+              })
+
+
+            fetch('https://bacit.info/hwr/20211005130251-b2d05bde52b959de88706272ca0b84f3.json')
+              .then((response) => {
+                return response.json()
+              })
+              .then((data) => {
+                // Leg til dataen fra JSON data til dokumentet
+                document.querySelector("#henrik .navn").innerHTML += data.name
+                document.querySelector("#henrik .dorn").innerHTML += data.dorn
+                document.querySelector("#henrik .personality").innerHTML += data.personality
+                document.querySelector("#henrik .workplace").innerHTML += data.workplace
+              })
+              .catch((err) => {
+                // Hvis noe feil skjer imens vi prøver å legge til dataen i dokumented,
+                // vis en feilmelding
+                alert("Noe feil med koden i Henrik sin del")
+              })
+
+
+            fetch('https://bacit.info/hwr/20211005130409-1a3f37750b0ac7fa4f8c28cd6c4b2d3d.json')
+              .then((response) => {
+                return response.json()
+              })
+              .then((data) => {
+                // Leg til dataen fra JSON data til dokumentet
+                document.querySelector("#kalieb .navn").innerHTML += data.name
+                document.querySelector("#kalieb .dorn").innerHTML += data.dorn
+                document.querySelector("#kalieb .personality").innerHTML += data.personality
+                document.querySelector("#kalieb .workplace").innerHTML += data.workplace
+              })
+              .catch((err) => {
+                // Hvis noe feil skjer imens vi prøver å legge til dataen i dokumented,
+                // vis en feilmelding
+                alert("Noe feil med koden i Kalieb sin del")
+              })
+
+
+            fetch('https://bacit.info/hwr/20211005123425-bca7c7b54db48bdd7e55e3cd5f7d9201.json')
+              .then((response) => {
+                return response.json()
+              })
+              .then((data) => {
+                // Leg til dataen fra JSON data til dokumentet
+                document.querySelector("#sid .navn").innerHTML += data.name
+                document.querySelector("#sid .dorn").innerHTML += data.dorn
+                document.querySelector("#sid .personality").innerHTML += data.personality
+                document.querySelector("#sid .workplace").innerHTML += data.workplace
+              })
+              .catch((err) => {
+                // Hvis noe feil skjer imens vi prøver å legge til dataen i dokumented,
+                // vis en feilmelding
+                alert("Noe feil med koden i Sid sin del")
+              })
+        </script>
+    </body>
+</html>

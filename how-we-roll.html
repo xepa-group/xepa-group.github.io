@@ -16,17 +16,32 @@
             <form>
                 <!--Navn av person-->
                 <p>
-                <label for="name">NAVN</label>
-                <input type="text" id="name" name="name">
+                <label for="name">Navn</label>
+                <input type="text" id="name" name="name" required>
                 </p>
 
                 <p>
                 <!-- dorn - day or night -->
-                <label for="dorn">MORGENFUGL</label>
-                <input type="range" id="dorn" name="dorn" value="50">
-                <label for="dorn">NATTUGLE</label>
+                <label for="dorn">Morgenfugl</label>
+                <input type="range" id="dorn" name="dorn" value="50" required>
+                <label for="dorn">Nattugle</label>
                 </p>
 
+                <p>
+                <label for="personality">Hva slags person er du?</label>
+                <select name="personality" id="personality">
+                  <option value="Introvert">Introvert</option>
+                  <option value="Ekstrovert">Ekstrovert</option>
+                </select> 
+                </p>
+
+                <p>
+                  Hvor jobber du best?
+                  <input type="radio" id="hjemme" name="workplace" value="Hjemme" required>
+                  <label for="hjemme">Hjemme</label>
+                  <input type="radio" id="kontor" name="workplace" value="Kontor">
+                  <label for="css">Kontor</label>
+                </p>
                 <button type="submit">Send</button>
             </form>
 
