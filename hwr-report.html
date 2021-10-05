@@ -9,53 +9,7 @@
 
     </head>
     <body>
-        <!--Resultat fra Adam-->
-        <div class="person" id="adam">
-            <div class="navn"><b>Navn:</b> </div>
-            <div class="dorn"><b>Morgenful/Natugle:</b> </div>
-            <div class="personality"><b>Personalitet:</b> </div>
-            <div class="workplace"><b>Vil helst jobbe:</b> </div>
-        </div>
-
-        <br>
-
-        <!--Resultat fra Bjarne-->
-        <div class="person" id="bjarne">
-            <div class="navn"><b>Navn:</b> </div>
-            <div class="dorn"><b>Morgenful/Natugle:</b> </div>
-            <div class="personality"><b>Personalitet:</b> </div>
-            <div class="workplace"><b>Vil helst jobbe:</b> </div>
-        </div>
-
-        <br>
-
-        <!--Resultat fra Henrik-->
-        <div class="person" id="henrik">
-            <div class="navn"><b>Navn:</b> </div>
-            <div class="dorn"><b>Morgenful/Natugle:</b> </div>
-            <div class="personality"><b>Personalitet:</b> </div>
-            <div class="workplace"><b>Vil helst jobbe:</b> </div>
-        </div>
-
-        <br>
-
-        <!--Resultat fra Kalieb-->
-        <div class="person" id="kalieb">
-            <div class="navn"><b>Navn:</b> </div>
-            <div class="dorn"><b>Morgenful/Natugle:</b> </div>
-            <div class="personality"><b>Personalitet:</b> </div>
-            <div class="workplace"><b>Vil helst jobbe:</b> </div>
-        </div>
-
-        <br>
-
-        <!--Resultat fra Sid-->
-        <div class="person" id="sid">
-            <div class="navn"><b>Navn:</b> </div>
-            <div class="dorn"><b>Morgenful/Natugle:</b> </div>
-            <div class="personality"><b>Personalitet:</b> </div>
-            <div class="workplace"><b>Vil helst jobbe:</b> </div>
-        </div>
+        <div class="members"><div>
 
         <script>
             // En liten database med navn av gruppe medlem og deres TRXID-TIME verdi
@@ -79,12 +33,20 @@
                                 return response.json()
                             })
                         .then((data) => {
-                                // Leg til dataen fra JSON data til dokumentet
-                                document.querySelector(`#${user_name} .navn`).innerHTML += data.name
-                                document.querySelector(`#${user_name} .dorn`).innerHTML += data.dorn
-                                document.querySelector(`#${user_name} .personality`).innerHTML += data.personality
-                                document.querySelector(`#${user_name} .workplace`).innerHTML += data.workplace
+                                // Leg til dataen til din template
+                                var template = `
+           <div class="person" id="${data.user_name}">
+           <div class="navn"><b>Navn:</b> ${data.name}</div>
+           <div class="dorn"><b>Morgenful/Natugle:</b> ${data.dorn}</div>
+           <div class="personality"><b>Personalitet:</b> ${data.personality}</div>
+           <div class="workplace"><b>Vil helst jobbe:</b> ${data.workplace}</div>
+           </div>
+           <br>
+                                `;
+
+                            document.querySelector(".members").innerHTML += template 
                             })
+
                         .catch((err) => {
                                 // Hvis noe feil skjer imens vi prøver å legge til dataen i dokumented,
                                 // vis en feilmelding
