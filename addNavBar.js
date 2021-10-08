@@ -3,7 +3,7 @@ document.write(`
 <nav>       
     <ul>    
         <li><a href="index.html">HJEM</a></li>
-        <li><a href="visittkort.html">VISITT KORT</a></li>
+        <li><a href="visittkort.html">VISITKORT</a></li>
         <li><a href="howweroll.html">HOW WE ROLL</a></li>
     </ul>   
 </nav>
