@@ -26,6 +26,7 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -40,6 +41,7 @@
       <workItem from="1633603855595" duration="713000" />
       <workItem from="1633604744695" duration="3230000" />
       <workItem from="1633941087381" duration="1515000" />
+      <workItem from="1633942982974" duration="1245000" />
     </task>
     <task id="LOCAL−00001" summary="Prøver litt rundt">
       <created>1633472303391</created>
@@ -71,7 +73,13 @@
       <option name="presentableId" value="LOCAL−00005" />
       <updated>1633942920745</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL−00006" summary="Prøver litt rundt">
+      <created>1633942995921</created>
+      <option name="number" value="LOCAL−00006" />
+      <option name="presentableId" value="LOCAL−00006" />
+      <updated>1633942995921</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
