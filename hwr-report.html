@@ -103,50 +103,376 @@
 
         <!--GitHub logo som går til GitHub repoen når du trykker på den-->
         <a href="https://github.com/xepa-group/xepa-group.github.io" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
-        <div class="members centered"><div>
+        
+        <center><canvas id="report"><canvas></center>
 
         <script>
-            // En liten database med navn av gruppe medlem og deres TRXID-TIME verdi
-            // fra JSON output fra HTML formen fra how-we-roll.html
-            const user_ids = {
-                "adam": "20211005134610-9740e9a04bd112608ca29b3e1dc014ee", 
-                "bjarne": "20211005134646-fafb3dcea2ce539cc26dcb83bd5eda47",
-                "henrik": "20211005134710-aed964a9a279ec37b5e6035c5a1ed6cc",
-                "kalieb": "20211005134734-b48054df20e75f1dd71abd7edc1f5409",
-                "sid": "20211005134808-c5e36e49732eb221688a7ddfaa9adf11"
-                };
 
-            // Looper gjennom user_ids
-            for (const [key, value] of Object.entries(user_ids)) {
-                    let user_name = key;
-                    let user_id = value;
+            var canvas = document.getElementById('report');
+            canvas.width  = 300;
+            canvas.height = 200;
+            var context = canvas.getContext('2d');
+            
+            fetch("https://bacit.info/hwr/20211016093445-9aed1b3a2b3c1eca5c3e1d8e9d5b9d9e.json", {cache: 'no-cache'})
+            .then(response => response.json())
+            .then(data => {
+              context.font = '14px serif';
+              context.fillStyle = "#000000";
+              context.fillText('Day or Night', 30, 10);
+              context.fillText('Motivation', 30, 54);
+              context.fillText('Optimist or Pesimist', 30, 100);
 
-                    // Henter data basert på brukeren TRXID-TIME verdi
-                    fetch(`https://bacit.info/hwr/${user_id}.json`)
-                        .then((response) => {
-                                return response.json()
-                            })
-                        .then((data) => {
-                                // Leg til dataen til din template
-                                var template = `
-           <div class="person" id="${data.user_name}">
-           <div class="navn"><b>Navn:</b> ${data.name}</div>
-           <div class="dorn"><b>Morgenful/Natugle:</b> ${data.dorn}%</div>
-           <div class="personality"><b>Personalitet:</b> ${data.personality}</div>
-           <div class="workplace"><b>Vil helst jobbe:</b> ${data.workplace}</div>
-           </div>
-                                `;
+              // Key showing which color is which group member
+              context.font = '14px serif';
+              context.fillStyle = "#000000";
+              context.fillText('Adam', 200, 30);
+              var X = 250;
+              var Y = 26;
+              var R = 5;
+              context.beginPath();
+              context.arc(X, Y, R, 0, 2*Math.PI, false);
+              context.fillStyle = "red";
+              context.fill();
+              context.lineWidth = 1;
+              context.strokeStyle = "black";
+              context.stroke();
 
-                            document.querySelector(".members").innerHTML += template 
-                            })
+              // Day or Night -- Draw line
+              context.beginPath();
+              context.moveTo(40,30);
+              context.lineTo(140,30);
 
-                        .catch((err) => {
-                                // Hvis noe feil skjer imens vi prøver å legge til dataen i dokumented,
-                                // vis en feilmelding
-                                alert("Noe feil med koden kopmis :P")
-                            })
-                }
+              // Motivation -- Draw line
+              context.moveTo(40,70);
+              context.lineTo(140,70);
+              context.stroke();
 
+              // Optimist or Pesimist -- Draw line
+              context.moveTo(40,120);
+              context.lineTo(140,120);
+              context.stroke();
+
+
+              // Day or Night -- Draw circle
+              var X = 40 + parseInt(data.dorn, 10);
+              var Y = 30;
+              var R = 5;
+              context.beginPath();
+              context.arc(X, Y, R, 0, 2*Math.PI, false);
+              context.fillStyle = "red";
+              context.fill();
+              context.lineWidth = 1;
+              context.strokeStyle = "black";
+              context.stroke();
+
+              // Motivation -- Draw circle
+              var X = 40 + parseInt(data.mot, 10);
+              var Y = 70;
+              var R = 5;
+              context.beginPath();
+              context.arc(X, Y, R, 0, 2*Math.PI, false);
+              context.fillStyle = "red";
+              context.fill();
+              context.lineWidth = 1;
+              context.strokeStyle = "black";
+              context.stroke();
+
+              // Optimist or Pesimist -- Draw circle
+              var X = 40 + parseInt(data.opes, 10);
+              var Y = 120;
+              var R = 5;
+              context.beginPath();
+              context.arc(X, Y, R, 0, 2*Math.PI, false);
+              context.fillStyle = "red";
+              context.fill();
+              context.lineWidth = 1;
+              context.strokeStyle = "black";
+              context.stroke();
+            });
+
+
+            fetch("https://bacit.info/hwr/20211016093707-b65462262af1bd409433a0278dfeb5d8.json", {cache: 'no-cache'})
+            .then(response => response.json())
+            .then(data => {
+
+
+              // Key showing which color is which group member
+              context.font = '14px serif';
+              context.fillStyle = "#000000";
+              context.fillText('Sid', 200, 60);
+              var X = 250;
+              var Y = 56;
+              var R = 5;
+              context.beginPath();
+              context.arc(X, Y, R, 0, 2*Math.PI, false);
+              context.fillStyle = "lightgreen";
+              context.fill();
+              context.lineWidth = 1;
+              context.strokeStyle = "black";
+              context.stroke();
+
+              // Day or Night -- Draw circle
+              var X = 40 + parseInt(data.dorn, 10);
+              var Y = 30;
+              var R = 5;
+              context.beginPath();
+              context.arc(X, Y, R, 0, 2*Math.PI, false);
+              context.fillStyle = "lightgreen";
+              context.fill();
+              context.lineWidth = 1;
+              context.strokeStyle = "black";
+              context.stroke();
+
+              // Motivation -- Draw circle
+              var X = 40 + parseInt(data.mot, 10);
+              var Y = 70;
+              var R = 5;
+              context.beginPath();
+              context.arc(X, Y, R, 0, 2*Math.PI, false);
+              context.fillStyle = "lightgreen";
+              context.fill();
+              context.lineWidth = 1;
+              context.strokeStyle = "black";
+              context.stroke();
+
+              // Optimist or Pesimist -- Draw circle
+              var X = 40 + parseInt(data.opes, 10);
+              var Y = 120;
+              var R = 5;
+              context.beginPath();
+              context.arc(X, Y, R, 0, 2*Math.PI, false);
+              context.fillStyle = "lightgreen";
+              context.fill();
+              context.lineWidth = 1;
+              context.strokeStyle = "black";
+              context.stroke();
+            });
+
+
+            fetch("https://bacit.info/hwr/20211016093707-b65462262af1bd409433a0278dfeb5d8.json", {cache: 'no-cache'})
+            .then(response => response.json())
+            .then(data => {
+
+              // Key showing which color is which group member
+              context.font = '14px serif';
+              context.fillStyle = "#000000";
+              context.fillText('Sid', 200, 60);
+              var X = 250;
+              var Y = 56;
+              var R = 5;
+              context.beginPath();
+              context.arc(X, Y, R, 0, 2*Math.PI, false);
+              context.fillStyle = "lightgreen";
+              context.fill();
+              context.lineWidth = 1;
+              context.strokeStyle = "black";
+              context.stroke();
+
+              // Day or Night -- Draw circle
+              var X = 40 + parseInt(data.dorn, 10);
+              var Y = 30;
+              var R = 5;
+              context.beginPath();
+              context.arc(X, Y, R, 0, 2*Math.PI, false);
+              context.fillStyle = "blue";
+              context.fill();
+              context.lineWidth = 1;
+              context.strokeStyle = "black";
+              context.stroke();
+
+              // Motivation -- Draw circle
+              var X = 40 + parseInt(data.mot, 10);
+              var Y = 70;
+              var R = 5;
+              context.beginPath();
+              context.arc(X, Y, R, 0, 2*Math.PI, false);
+              context.fillStyle = "blue";
+              context.fill();
+              context.lineWidth = 1;
+              context.strokeStyle = "black";
+              context.stroke();
+
+              // Optimist or Pesimist -- Draw circle
+              var X = 40 + parseInt(data.opes, 10);
+              var Y = 120;
+              var R = 5;
+              context.beginPath();
+              context.arc(X, Y, R, 0, 2*Math.PI, false);
+              context.fillStyle = "blue";
+              context.fill();
+              context.lineWidth = 1;
+              context.strokeStyle = "black";
+              context.stroke();
+            });
+
+            fetch("https://bacit.info/hwr/20211016093518-63d5bb35d75c6a6f896c59264d0cff19.json", {cache: 'no-cache'})
+            .then(response => response.json())
+            .then(data => {
+
+              // Key showing which color is which group member
+              context.font = '14px serif';
+              context.fillStyle = "#000000";
+              context.fillText('Bjarne', 200, 90);
+              var X = 250;
+              var Y = 86;
+              var R = 5;
+              context.beginPath();
+              context.arc(X, Y, R, 0, 2*Math.PI, false);
+              context.fillStyle = "yellow";
+              context.fill();
+              context.lineWidth = 1;
+              context.strokeStyle = "black";
+              context.stroke();
+
+              // Day or Night -- Draw circle
+              var X = 40 + parseInt(data.dorn, 10);
+              var Y = 30;
+              var R = 5;
+              context.beginPath();
+              context.arc(X, Y, R, 0, 2*Math.PI, false);
+              context.fillStyle = "yellow";
+              context.fill();
+              context.lineWidth = 1;
+              context.strokeStyle = "black";
+              context.stroke();
+
+              // Motivation -- Draw circle
+              var X = 40 + parseInt(data.mot, 10);
+              var Y = 70;
+              var R = 5;
+              context.beginPath();
+              context.arc(X, Y, R, 0, 2*Math.PI, false);
+              context.fillStyle = "yellow";
+              context.fill();
+              context.lineWidth = 1;
+              context.strokeStyle = "black";
+              context.stroke();
+
+              // Optimist or Pesimist -- Draw circle
+              var X = 40 + parseInt(data.opes, 10);
+              var Y = 120;
+              var R = 5;
+              context.beginPath();
+              context.arc(X, Y, R, 0, 2*Math.PI, false);
+              context.fillStyle = "yellow";
+              context.fill();
+              context.lineWidth = 1;
+              context.strokeStyle = "black";
+              context.stroke();
+            });
+
+            fetch("https://bacit.info/hwr/20211016093600-4a38c31d06179c8eafe8fd1e4abd90a3.json", {cache: 'no-cache'})
+            .then(response => response.json())
+            .then(data => {
+
+              // Key showing which color is which group member
+              context.font = '14px serif';
+              context.fillStyle = "#000000";
+              context.fillText('Henrik', 200, 120);
+              var X = 250;
+              var Y = 116;
+              var R = 5;
+              context.beginPath();
+              context.arc(X, Y, R, 0, 2*Math.PI, false);
+              context.fillStyle = "magenta";
+              context.fill();
+              context.lineWidth = 1;
+              context.strokeStyle = "black";
+              context.stroke();
+
+              // Day or Night -- Draw circle
+              var X = 40 + parseInt(data.dorn, 10);
+              var Y = 30;
+              var R = 5;
+              context.beginPath();
+              context.arc(X, Y, R, 0, 2*Math.PI, false);
+              context.fillStyle = "magenta";
+              context.fill();
+              context.lineWidth = 1;
+              context.strokeStyle = "black";
+              context.stroke();
+
+              // Motivation -- Draw circle
+              var X = 40 + parseInt(data.mot, 10);
+              var Y = 70;
+              var R = 5;
+              context.beginPath();
+              context.arc(X, Y, R, 0, 2*Math.PI, false);
+              context.fillStyle = "magenta";
+              context.fill();
+              context.lineWidth = 1;
+              context.strokeStyle = "black";
+              context.stroke();
+
+              // Optimist or Pesimist -- Draw circle
+              var X = 40 + parseInt(data.opes, 10);
+              var Y = 120;
+              var R = 5;
+              context.beginPath();
+              context.arc(X, Y, R, 0, 2*Math.PI, false);
+              context.fillStyle = "magents";
+              context.fill();
+              context.lineWidth = 1;
+              context.strokeStyle = "black";
+              context.stroke();
+            });
+
+
+            fetch("https://bacit.info/hwr/20211016093638-a10239091ae8823309a91ea924de495a.json", {cache: 'no-cache'})
+            .then(response => response.json())
+            .then(data => {
+
+              // Key showing which color is which group member
+              context.font = '14px serif';
+              context.fillStyle = "#000000";
+              context.fillText('Kalieb', 200, 150);
+              var X = 250;
+              var Y = 146;
+              var R = 5;
+              context.beginPath();
+              context.arc(X, Y, R, 0, 2*Math.PI, false);
+              context.fillStyle = "orange";
+              context.fill();
+              context.lineWidth = 1;
+              context.strokeStyle = "black";
+              context.stroke();
+
+              // Day or Night -- Draw circle
+              var X = 40 + parseInt(data.dorn, 10);
+              var Y = 30;
+              var R = 5;
+              context.beginPath();
+              context.arc(X, Y, R, 0, 2*Math.PI, false);
+              context.fillStyle = "orange";
+              context.fill();
+              context.lineWidth = 1;
+              context.strokeStyle = "black";
+              context.stroke();
+
+              // Motivation -- Draw circle
+              var X = 40 + parseInt(data.mot, 10);
+              var Y = 70;
+              var R = 5;
+              context.beginPath();
+              context.arc(X, Y, R, 0, 2*Math.PI, false);
+              context.fillStyle = "orange";
+              context.fill();
+              context.lineWidth = 1;
+              context.strokeStyle = "black";
+              context.stroke();
+
+              // Optimist or Pesimist -- Draw circle
+              var X = 40 + parseInt(data.opes, 10);
+              var Y = 120;
+              var R = 5;
+              context.beginPath();
+              context.arc(X, Y, R, 0, 2*Math.PI, false);
+              context.fillStyle = "orange";
+              context.fill();
+              context.lineWidth = 1;
+              context.strokeStyle = "black";
+              context.stroke();
+            });
         </script>
     </body>
 </html>
